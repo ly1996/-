@@ -1,0 +1,14 @@
+Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference between any two time points in the list.
+Example 1:
+Input: ["23:59","00:00"]
+Output: 1
+Note:
+The number of time points in the given list is at least 2 and won't exceed 20000.
+The input time is legal and ranges from 00:00 to 23:59.
+
+肯定需要将字符串转化为分钟数，由于格式是完全确定的，所以只需要将每个数字字符转化为数字并乘上对应位置的倍数再相加
+思路一：
+得到所有的数字然后排序得到有序数组，比较相邻两个数之间的差，当然需要比较第一个数和最后一个数之间的差：（第一个数+1440-最后一个数）
+思路二：
+我们所有的数字只有1440种可能，所以可以不用比较排序。
+我们可以设置一个长度为1440的bool数组，代表该位置对应的数字是否存在：如果存在两个相同的数，返回0；将值为true的位置对应的数字加入vector，这样自然得到一个有序的数组，然后继续方法1中的计算。

@@ -1,0 +1,21 @@
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+
+Example 1:
+
+Input: "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()"
+Example 2:
+
+Input: ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()"
+
+虽然被划分在动态规划里面，但是用动态规划妥妥超时，比如列出的两种超时方法
+既然是括号匹配问题，还是用栈解决
+在栈中，不存储括号，而是(的index
+两个变量：maxLength，start（初始化为-1）
+所以如果遇到(，则将index压栈
+如果遇到)：
+（1）如果栈是空的，那么说明之后的字符串和之前的字符串绝对不能串在一起，也就是start会更新为当前坐标值
+（2）如果不空，则pop；如果pop之后栈空了，那么当前的字符串长度为坐标值-start，如果不空，则当前的字符串长度为坐标值-栈顶的元素的坐标值

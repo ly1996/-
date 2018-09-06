@@ -1,0 +1,16 @@
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+
+Example 1:
+
+Input: n = 12
+Output: 3 
+Explanation: 12 = 4 + 4 + 4.
+Example 2:
+
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+
+思路：
+（1）当一个数是平方数时，结果为1.
+（2）当不是平方数时，需要比较所有该数减去某平方数得到的数的结果+1，得到最小的结果。比如11，就要考虑1+result[11-1]和1+result[11-4]和1+result[11-9].

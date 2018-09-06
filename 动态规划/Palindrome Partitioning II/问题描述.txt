@@ -1,0 +1,11 @@
+Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example:
+
+Input: "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+
+从i到j的子字符串：如果本身是回文，那么这段字符串需要分割的次数为0；如果不是回文，那么假设分割点在k，i<=k<j，那么分割次数=(i,k)+(k+1,j)+1，从中选出最小的k以及对应的长度

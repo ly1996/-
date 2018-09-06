@@ -1,0 +1,29 @@
+Given an unsorted array of integers, find the length of longest increasing subsequence.
+
+Example:
+
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+Note:
+
+There may be more than one LIS combination, it is only necessary for you to return the length.
+Your algorithm should run in O(n2) complexity.
+
+1、O(n^2)就是遍历
+以一个数组存放以第i个字符结尾的最长子字符串的长度
+所以对于i+1，遍历0到i的数字，如果其比i+1的数字小，那么就可以将以第i个字符结尾的最长子字符串的长度加1，我们比较所有情况下得到的最长长度，最终得到最长的那一个
+2、O(logn)的做法
+利用数组minNum存储长度为i的递增子字符串中，最小的最后一位数字
+然后迭代更新minNum数组
+起始情况：minNum[0] = nums[0]，maxLen = 1
+比如[10,9,2,5,3,7,101,18]
+那么minNum的迭代情况为
+10【1】
+9【1】
+2【1】
+2	5【2】
+2	3【2】
+2	3	7【3】
+2	3	7	101【4】
+2	3	7	18【4】

@@ -1,0 +1,15 @@
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+
+思路一：动态规划
+对于字符串从i到j的子字符串而言，我们对比i处和j处的字符是否相等，如果相等，那么从i到j的子字符串是否是回文决定于从i+1到j-1的子字符串是否是回文。
+所以我们可以迭代计算长度为2，3，4……n的子字符串是否是回文
