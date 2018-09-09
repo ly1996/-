@@ -1,0 +1,19 @@
+Given a positive 32-bit integer n, you need to find the smallest 32-bit integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive 32-bit integer exists, you need to return -1.
+
+Example 1:
+
+Input: 12
+Output: 21
+ 
+
+Example 2:
+
+Input: 21
+Output: -1
+
+思路：
+以123465为例：
+我们从右到左找第一个左<右的位置。
+如果没找到，返回-1.
+在这里是4<6,然后我们将4后面的数字按照从小到大排列 -> 123456
+然后我们将4和56序列中第一个比4大的数字交换，也就是4和5交换 -> 123546

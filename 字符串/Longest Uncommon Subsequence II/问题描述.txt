@@ -1,0 +1,23 @@
+Given a list of strings, you need to find the longest uncommon subsequence among them. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.
+
+A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.
+
+The input will be a list of strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn't exist, return -1.
+
+Example 1:
+Input: "aba", "cdc", "eae"
+Output: 3
+Note:
+
+All the given strings' lengths will not exceed 10.
+The length of the given list will be in the range of [2, 50].
+
+思路：
+（1）一个字符串如果重复，那么它必然不会是最大不同字符串
+（2）一个字符串如果不重复，那么需要检查它是否包含在比它长的字符串中
+
+所以将字符串按照长度排列，然后从长到短遍历：
+（1）如果重复，跳过
+（2）遍历比它长的字符串检查是否包含其中
+	（a）包含，跳过
+	（b）不包含，返回当前字符串的长度
