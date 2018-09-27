@@ -1,0 +1,27 @@
+Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+
+Example:
+
+Input: 3
+Output:
+[
+  [1,null,3,2],
+  [3,2,null,1],
+  [3,1,null,null,2],
+  [2,1,3],
+  [1,null,2,null,3]
+]
+Explanation:
+The above output corresponds to the 5 unique BST's shown below:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+
+分析：
+二叉搜索树要求父节点的值小于等于右子树所有节点的值，大于等于左子树所有节点的值。
+所以对于输入值n，我们得到数组[1 ... n]，我们可以轮流让1 ... n做父节点，从而将1 ... n的数组分为左右两部份，然后对左右子节点递归求解得到两个数组，然后嵌套for循环得到答案
+（1）如果数组为空，返回[NULL]
+（2）如果不为空，则对数组[begin ... end]求解，也就是轮流让begin ... end做父节点，然后继续第一步的做法

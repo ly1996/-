@@ -1,0 +1,26 @@
+Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+
+Note: A leaf is a node with no children.
+
+Example:
+
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \    / \
+7    2  5   1
+Return:
+
+[
+   [5,4,11,2],
+   [5,8,4,5]
+]
+
+思路：
+不用递归的方法的话，那么就用先进先出队列来记录节点和节点的和。
+首先在两个队列中分别push root节点和它的值
+每次出队列一个节点和一个值，如果当前节点为叶节点，判断值是否等于和；如果不是叶节点，将该节点可能的左右节点以及对应的和入队列。

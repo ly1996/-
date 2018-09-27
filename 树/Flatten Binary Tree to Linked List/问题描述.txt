@@ -1,0 +1,28 @@
+Given a binary tree, flatten it to a linked list in-place.
+
+For example, given the following tree:
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+思路：
+就是想不用递归如何中序遍历树
+（1）首先压栈根节点
+（2）每次访问栈顶，出栈，然后压栈右子树，然后压栈左子树直到栈为空
+
+构造flatten树时，每次出栈的节点都被链接到末尾，然后将末尾更新为该节点
