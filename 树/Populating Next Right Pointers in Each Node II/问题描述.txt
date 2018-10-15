@@ -1,0 +1,38 @@
+Given a binary tree
+
+struct TreeLinkNode {
+  TreeLinkNode *left;
+  TreeLinkNode *right;
+  TreeLinkNode *next;
+}
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+Initially, all next pointers are set to NULL.
+
+Note:
+
+You may only use constant extra space.
+Recursive approach is fine, implicit stack space does not count as extra space for this problem.
+Example:
+
+Given the following binary tree,
+
+     1
+   /  \
+  2    3
+ / \    \
+4   5    7
+After calling your function, the tree should look like:
+
+     1 -> NULL
+   /  \
+  2 -> 3 -> NULL
+ / \    \
+4-> 5 -> 7 -> NULL
+
+
+问题思路：
+其实就是如何一级一级的遍历树。
+我们可以假设上一层已经遍历并且结构已经好了，假设上一层开头的节点为root。
+tmpNode链接下一层的开始；currentNode代表下一层当前访问的节点
+我们可以利用root访问并链接下一层的节点，当遍历完后tmpNode的next节点就是下一级的root。以此类推。
