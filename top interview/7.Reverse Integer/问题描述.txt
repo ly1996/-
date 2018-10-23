@@ -1,0 +1,28 @@
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+
+Input: 123
+Output: 321
+Example 2:
+
+Input: -123
+Output: -321
+Example 3:
+
+Input: 120
+Output: 21
+Note:
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+
+解法一（自己的做法）：
+（1）如果x为0或者-2147483648，直接返回0.其中-2147483648直接返回0是因为求负会出问题。
+（2）如果x为负，记录负，然后将x乘以-1
+（3）用long存储reverse = 0作为返回值。
+（4）不断reverse = reverse * 10 + x % 10. 同时，x = x / 10.
+（5）直到x == 0
+（6）检查reverse，如果 >2147483647，返回0.
+（7）返回reverse加上符号后的值。
+
+解法二：
+分析：其实可以不分正负.reverse = reverse * 10 + x % 10对负数也成立。

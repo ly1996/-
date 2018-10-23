@@ -1,0 +1,41 @@
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Example 2:
+
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+问题分析
+（1）子字符串substring是指连续的，subsequence只需要符合字符串顺序，不需要连续。
+（2）本题目只需要从左到右扫描字符串一遍，记录一个left代表扫描到现在当前不重复的字符串的开始。
+以abcabcbb为例，分别为
+String left
+A 0
+Ab 0
+Abc 0
+Bca 1
+cab 2
+Abc 3
+Cb 5
+B 7
+我们可以用一个hash表来记录字符与其出现的最后一个位置的index。
+具体处理步骤为：
+（1）如果当前字符不存在在哈希表中，则left不变
+（2）如果存在，比较当前left和字符之前位置，将更大者更新left
+（3）更新哈希表，使当前字符对应当前位置
+（4）更新最大值，当前长度计算为index - left，将长度与最大长度比较
+由于string s中包含的char为0-255
+所以我们可以用数组或者vector代替map来实现，这样实现常数时间的查找、插入。
+
+问题最大的收获是：利用数组或vector代替字符hash表，是的查找和插入是常数时间。

@@ -1,0 +1,15 @@
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Example:
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+
+思路：
+其实就是将l1当前节点的值加上l2当前节点的值加上进位
+需要考虑的特殊情况是：
+（1）l1与l2当前节点一个为NULL一个不为NULL，则把不为空的节点的值加上进位。如果进位为0，则可以不加，直接将剩余字符串链接在后面。如果进位不为0，则需要加。
+（2）l1与l2当前节点都为NULL，如果进位不为0则需要新加节点。
