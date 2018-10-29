@@ -1,0 +1,21 @@
+Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+
+The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+
+You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+Example 1:
+
+Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+Example 2:
+
+Input: [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+
+其实就是从后往前遍历数组，不断将进位与当前数相加。然后将（和%10）赋予当前位置，而进位=（和／10）。
+如果进位为0，则break。
+
+最后要检查进位是否为1，如果为1，则需要在数组第一位插入1。

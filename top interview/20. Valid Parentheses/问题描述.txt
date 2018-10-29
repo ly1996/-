@@ -1,0 +1,39 @@
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+Example 1:
+
+Input: "()"
+Output: true
+Example 2:
+
+Input: "()[]{}"
+Output: true
+Example 3:
+
+Input: "(]"
+Output: false
+Example 4:
+
+Input: "([)]"
+Output: false
+Example 5:
+
+Input: "{[]}"
+Output: true
+
+问题思路：
+用栈解决
+从左到右扫描字符串
+（1）我们遇到左括号（’(’,’{’,’[’），将其压栈
+（2）如果遇到右括号（’)’,’}’,’]’），比较其是否与栈顶元素匹配。
+	（a）如果栈为空或者不匹配，返回false
+	（b）如果匹配，出栈pop
+扫描完后。
+（1）如果栈不为空，返回false
+（2）否则，返回true

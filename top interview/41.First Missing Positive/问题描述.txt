@@ -1,0 +1,22 @@
+Example 1:
+
+Input: [1,2,0]
+Output: 3
+Example 2:
+
+Input: [3,4,-1,1]
+Output: 2
+Example 3:
+
+Input: [7,8,9,11,12]
+Output: 1
+Note:
+
+Your algorithm should run in O(n) time and uses constant extra space.
+
+要求时间是O(n)，且空间复杂度O(1)。
+思路：总体思路就是对于正数num，我们需要将其放在nums的num-1处。然后从小到大检查是否匹配，然后返回第一个不匹配的数。
+（1）遍历数组 i从0 - n-1
+	（a）对于位置i处的数nums[i]，如果其<=0或者>n,直接跳过不处理
+	（b）否则，它应该在的位置是nums[i] + 1，如果nums[i] + 1处的数不为nums[i]。我们需要将两数交换。然后判断交换后的数是属于第一种情况还是第二种情况，继续处理位置i。
+（2）遍历数组 i从0 - n-1，如果nums[i] != i+1，返回 i+1。

@@ -1,0 +1,25 @@
+Given a linked list, remove the n-th node from the end of list and return its head.
+
+Example:
+
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+Note:
+
+Given n will always be valid.
+
+Follow up:
+
+Could you do this in one pass?
+
+解法1:
+用vector存储所有的节点，这样就可以直接得到需要去掉的节点及其前后的节点.但是空间复杂度感人
+解法2：
+两次pass list。
+第一次得到list的长度
+第二次得到需要去掉的节点及其前后的节点。这样就不需要额外空间
+解法3:
+用两个指针。都初始化为head。
+先将first指针往后移动n位。
+然后second和first指针一起移动直到first移动到了末尾。这样通过second指针可以得到需要去掉的节点及其前后的节点。

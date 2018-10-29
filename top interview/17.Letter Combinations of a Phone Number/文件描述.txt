@@ -1,0 +1,17 @@
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+《电话的字母数字对应》
+
+Example:
+
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+
+解题步骤：
+保持循环式：
+第i次循环前：vector存储前i-1个电话号码可能构成的字符串
+第i次循环：让第i个数字代表的每个字符分别加在vector中每个字符串的末尾构成新的字符串vector
+
+第1次循环前：vector<string> vecReturn = {“”};

@@ -1,0 +1,20 @@
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+
+解决思路：
+记录三个值，当前字符串s，剩余的左括号数count_L，剩余的右括号数count_R。
+如果count_L == count_R == 0，那么将s加入vector，返回
+如果count_L == 0，将剩余的右括号直接加到s后面，将s加入vector，返回
+如果count_L == count_R，则s只能加左括号，然后循环调用方法，s -> s + ‘(’ , count_L -> count_L - 1
+否则：
+（1）s加左括号，然后循环调用方法，s -> s + ‘(’ , count_L -> count_L - 1
+（2）s加右括号，然后循环调用方法，s -> s + ‘)’ , count_R -> count_R - 1

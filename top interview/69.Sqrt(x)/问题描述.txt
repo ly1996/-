@@ -1,0 +1,38 @@
+Implement int sqrt(int x).
+
+Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+
+Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+
+Example 1:
+
+Input: 4
+Output: 2
+Example 2:
+
+Input: 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+
+问题分析：求的解一定在0到x之间。
+所以我们可以不断二分搜索。我们需要注意的是边界条件。
+
+	while(l <= r)
+        {
+            int mid = (l + r) / 2; //求中值
+            
+            if(x / mid == mid)
+            {
+                return mid;
+            }
+            else if(x / mid < mid)
+            {
+                r = mid - 1;
+            }
+            else
+            {
+                l = mid + 1;
+            }
+        }
+	return l - 1; //e.g.:8 left = 1, right = 3 -> left = 1, right = 2 -> left = 2, right = 2 -> left = 3, right = 2(break)

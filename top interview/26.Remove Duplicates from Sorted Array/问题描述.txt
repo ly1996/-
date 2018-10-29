@@ -1,0 +1,44 @@
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+Example 1:
+
+Given nums = [1,1,2],
+
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
+
+It doesn't matter what you leave beyond the returned length.
+Example 2:
+
+Given nums = [0,0,1,1,1,2,2,3,3,4],
+
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+
+It doesn't matter what values are set beyond the returned length.
+Clarification:
+
+Confused why the returned value is an integer but your answer is an array?
+
+Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+
+解题步骤：
+（1）如果nums的大小<=1，直接返回大小
+（2）用len=1记录长度，也是下一个不同元素放的位置；用cur=nums[0]记录当前的值。
+（3）不断比较nums[i]与当前值：
+	(a)如果不同，nums[len++]=nums[i], cur=nums[i]
+	(b)如果相同，跳过
+（4）返回len
+
+我们用len和i两个指针分别代表：下一个不同元素存放位置，当前访问的元素位置

@@ -1,0 +1,26 @@
+Implement strStr().
+
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Example 1:
+
+Input: haystack = "hello", needle = "ll"
+Output: 2
+Example 2:
+
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+Clarification:
+
+What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+
+思路：最简单的从左到右匹配
+指针startIdx = -1：haystack和needle当前匹配开始的字符位置
+计数sameIdx = 0：haystack和needle匹配的字符数量
+
+从左到右遍历haystack: cur从0到n-1
+（1）比较haystack[cur] 和 needle[sameIdx：haystack]
+	(a)如果相等，如果sameIdx = 0 说明是第一次匹配上，则startIdx = cur。如果sameIdx = n - 1，则说明完全匹配，返回当前的startIdx。sameIdx++
+	(b)如果不相等，如果startIdx != -1，则返回之前匹配开始的位置，sameIdx = 0，startIdx = -1.
