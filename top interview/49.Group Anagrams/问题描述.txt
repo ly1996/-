@@ -1,0 +1,22 @@
+
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+分析：
+关键就在于怎么比较两个字符串“相等”
+
+最原始的做法，string sort，然后比较sort之后字符串是否相等，但是这样复杂度就是klogk
+还有一种做法就是利用计数排序的做法。总共26个字母，记录每个字母的次数，将次数转为字符串然后比较。这样复杂度是k

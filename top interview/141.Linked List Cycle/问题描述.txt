@@ -1,0 +1,11 @@
+Given a linked list, determine if it has a cycle in it.
+
+Follow up:
+Can you solve it without using extra space?
+
+思路一：
+每访问一个节点，将该节点的next指针指向一个我们新建的节点。
+所以当我们访问到一个节点，该节点的next指针指向新建的节点，则说明它已经访问过了
+
+思路二：
+利用赛跑的思想，一个指针慢，一个指针快，如果有环的话，那么两个指针一定会重合。

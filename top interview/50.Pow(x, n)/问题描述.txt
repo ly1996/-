@@ -1,0 +1,31 @@
+Implement pow(x, n), which calculates x raised to the power n (xn).
+
+Example 1:
+
+Input: 2.00000, 10
+Output: 1024.00000
+Example 2:
+
+Input: 2.10000, 3
+Output: 9.26100
+Example 3:
+
+Input: 2.00000, -2
+Output: 0.25000
+Explanation: 2-2 = 1/22 = 1/4 = 0.25
+Note:
+
+-100.0 < x < 100.0
+n is a 32-bit signed integer, within the range [−231, 231 − 1]
+
+问题分析。
+以3 ^ 14为例
+3 ^ 14 = 3 ^ 7 * 3 ^ 7
+3 ^ 7 = 3 ^ 3 * 3 ^ 3 * 3
+3 ^ 3 = 3 ^ 1 * 3 ^ 1 * 3
+3 ^ 1 = 3 ^ 0 * 3 ^ 0 * 3
+
+而14 = 1110
+所以我们可以得到n的二进制表达。从左到右遍历。遇到1时，result = result * result * x。遇到0时，result = result * result.
+
+当然，需要处理n为负的情况，此时x = 1 / x, n = -n

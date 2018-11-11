@@ -1,0 +1,31 @@
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Example 1:
+
+Input: [2,2,1]
+Output: 1
+Example 2:
+
+Input: [4,1,2,1,2]
+Output: 4
+
+思路一：
+利用map
+（1）第一个循环，map[num] = 0;
+（2）第二个循环, map[num] ++;
+（3）第三个循环，检查哪个map[num] == 1，返回num
+
+思路二：
+（1）构建set
+（2）计算sum(set) * 2
+（3）计算sum(vec)
+（4）num = sum(set) * 2 - sum(vec)
+
+思路三：
+利用异或思想:
+x ^ x = 0 ； x ^ 0 = x
+所以对于nums，所有数异或之后跟0异或得到就是需要返回的num

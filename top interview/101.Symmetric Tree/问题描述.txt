@@ -1,0 +1,25 @@
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+But the following [1,2,2,null,3,null,3] is not:
+    1
+   / \
+  2   2
+   \   \
+   3    3
+
+不用递归。用队列来处理。
+初始：进root的left和right
+
+每次循环：
+（1）出队列两个节点，比较是否相同
+	（a）相同，押入两个节点的(left,right)和(right, left)
+	（b）返回false
+
+如果出循环，返回true

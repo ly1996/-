@@ -1,0 +1,23 @@
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+Example 1:
+
+Input: "A man, a plan, a canal: Panama"
+Output: true
+Example 2:
+
+Input: "race a car"
+Output: false
+
+解题思路：
+这道题需要解决：
+（1）如何判断当前字符需不需要进行回文判断
+（2）如何判断两个字符相等
+
+我的解决办法是建立一个256位的vector，初识时全设为0
+然后对于字母，他们的值设置为ch - 对应的’a’或者’A’ + 1
+对于数字，他们的值设置为ch - ‘0’ + 1
+
+这样可以通过count[ch] == 0来判断是否需要跳过以及count[left] == count[right]判断两字符是否’相等’

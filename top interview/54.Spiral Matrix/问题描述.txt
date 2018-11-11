@@ -1,0 +1,27 @@
+Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+
+Example 1:
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+Output: [1,2,3,6,9,8,7,4,5]
+Example 2:
+
+Input:
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+问题分析，我们可以保存left,right,top,bottom四个数。
+每次循环不断重复向右，向下，向左，向上四个操作。
+（1）向右，[top][j], j属于left -> right。结束后top ++;
+（2）向下，[i][right]，i属于top -> bottom。结束后right —-；
+（3）向左，[bottom][j], j属于right -> left。结束后bottom —-;
+（4）向上，[I][left]，I属于bottom -> top。结束后left ++；
