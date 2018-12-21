@@ -1,0 +1,41 @@
+Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+Note:
+
+Return 0 if there is no such transformation sequence.
+All words have the same length.
+All words contain only lowercase alphabetic characters.
+You may assume no duplicates in the word list.
+You may assume beginWord and endWord are non-empty and are not the same.
+Example 1:
+
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+Example 2:
+
+Input:
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+
+Output: 0
+
+Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+
+思路：
+其实就是广度优先搜索
+从开始词出发：在wordset中寻找只通过变换一个字母就能相等的词。
+如果恰好得到了和endWord相等的词就返回
+将这些词从wordset中删除作为下一次搜索的开始。
+
+tip：
+其实我们从开始词搜和结束词搜都是一样的，所以我们可以比较每次搜索结束后得到的set和最终的set的大小，下一次选择较小的集合开始搜索

@@ -1,0 +1,35 @@
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Example 1:
+
+Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+Example 2:
+
+Input: [-1,-100,3,99] and k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+Note:
+
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+
+问题分析：
+首先 k = k % len
+只需要O（1）的空间复杂度的方法有两种
+（1）无论循环多少次，其实我们可以发现替代的元素可以形成一个又一个的环。
+比如1，2，3，4，5，6，7，8 k=2
+那么1，3，5，7会形成一个环；2，4，6，8会形成一个环。他们的大小相等，互不相交
+同时我们可以注意到，如果环的个数为i，那么nums[0],nums[1]…nums[i-1]一定互相不在一个环里面。
+所以我们可以用两层循环遍历一遍数组。
+外层循环记录开始的位置，0，1，2，3逐渐迭代。跳出的条件是总的替换数==len
+内层循环不断计算当前位置的下一个位置，保存下一个位置的值，用当前位置的值填充下一个位置的值，然后将位置挪到下一个位置直到下一个位置回到开始位置。
+
+（2）当我们旋转数组k次时，我们发现k个末尾的数到了开头，另外n-k个开头的数到了末尾
+所以我们首先直接旋转数组，将开头和末尾的数对调，然后将旋转后的数组的前k个数旋转（将顺序弄对），再将后n-k个数旋转（将顺序弄对）。

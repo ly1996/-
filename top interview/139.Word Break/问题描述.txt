@@ -1,0 +1,41 @@
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+Note:
+
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+
+问题分析：
+n = s.length
+用canFind[n+1]代表第i个字符能否到达。canFind[0] = 1。最后我们需要知道canFind[n]是否等于1。
+
+解法一（我的方法）：
+利用字符串匹配算法找出s和所有words匹配的位置。
+该位置记录为(start,end)：为word在s中开始匹配的位置和结束匹配的位置。
+对找到的所有位置排序。按照start从小到大排序
+然后遍历所有的位置。
+如果，canFind[start - 1] == true,那么canFind[end] = true.
+为什么需要排序呢？因为对于一个(start,end)，只有canFind[start - 1] == true才能导致canFind[end] = true。而只有start更小的字符串能导致canFind[start - 1] == true的结果。
+
+解法二：（暴力法）：
+两重循环。
+canFind[0] = true
+（1）外循环，循环i，I代表canFind[i].
+（2）内循环，循环所有word。如果（a）I大于等于当前word的长度（代表可能匹配）。（b）canFind[i-wordSize] == true。（c）s[i-wordSize…i] == word。那么可以设置canFind[i] = true.
+
+这里我们不主动寻找匹配的位置，而是在位置可能匹配（长度合适，初始位置合适）后再判断是否相等。对比字符串匹配的思路减少了很多不必要的比较的操作。

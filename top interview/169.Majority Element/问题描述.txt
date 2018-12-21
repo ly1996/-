@@ -1,0 +1,24 @@
+
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+
+Example 1:
+
+Input: [3,2,3]
+Output: 3
+Example 2:
+
+Input: [2,2,1,1,1,2,2]
+Output: 2
+
+问题分析：
+（1）最直接想到的方法：利用一个map存储所有值的count，所需要的是线性的扫描时间和线性的空间
+（2）sort，然后返回中位数，因为如果一个数超过了数组的一半，那么排序数组的中位数一定是这个主要元素。排序可以不需要额外空间，但是需要O(nlgn)的时间。
+（3）Divide and Conquer
+将数组一分为二，分别得到两个数组的main num。显然对于长度为1的数组，main num就是其唯一的元素。如果左右数组的main num相等，那么该main num就是当前数组的main num，如果不相等，则计算两者在整个数组的count，将count较大者作为当前数组的main num。时间复杂度：O(nlgn)，空间复杂度：O(lgn)
+（4）设计一个巧妙的算法：
+维持一个计数count = 1和当前值candidate = nums[0]
+从nums[1]开始遍历nums。
+（1）如果当前的count == 0，那么更新candidate = nums[I]，count = 1
+（2）否则，如果candidate == nums[I]，那么count ++；否则，count—-

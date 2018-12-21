@@ -1,0 +1,21 @@
+Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+
+For example:
+Given binary tree [3,9,20,null,null,15,7],
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its level order traversal as:
+[
+  [3],
+  [9,20],
+  [15,7]
+]
+
+解题思路：
+利用队列，初始化时压入<root,0>，设h = 0
+每次出队列之后，压入左右子树<tmp -> left , height + 1>,<tmp -> right , height + 1>
+
+当发现出队列的高度 != h，那说明已经遍历到了下一层级，将之前遍历的数组加入结果，然后清空。

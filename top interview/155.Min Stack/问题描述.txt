@@ -1,0 +1,33 @@
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.
+Example:
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> Returns -3.
+minStack.pop();
+minStack.top();      --> Returns 0.
+minStack.getMin();   --> Returns -2.
+
+我自己的思路：
+用stack来装元素，用链表来从小到大链接元素。
+对于push: stack push ; 将元素加入链表，放到小于它的元素和大于等于它的元素之间
+对于pop：stack pop ; 根据元素的链接在链表中直接删除元素
+对于top：stack top
+对于getMin：返回链表的第一个元素
+
+显然：这里面不是O(1)的操作就是将元素插入链表。
+
+最快的思路：
+用两个stack。一个stack正常的押入所有的元素。另外一个stack只有当为栈空或者压入元素比栈顶元素小的时候才压入。
+
+理由：如果当前元素比栈顶元素大，那么getMin要现实当前元素的必要条件是栈内元素出栈，但这意味着当前元素肯定也出栈了。所以不需要压入当前元素。
+对于push: stack1 push ; stack2 如果为空或者栈顶元素大于等于当前元素，push
+对于pop：stack1 pop ; stack2 如果栈顶元素等于stack1出栈元素，出栈
+对于top：stack1 top
+对于getMin：stack2 top

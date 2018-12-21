@@ -1,0 +1,24 @@
+Given a 2D board and a word, find if the word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+Example:
+
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+
+思路：
+首先遍历数组，一旦找到和word首字母相等的位置，就将board, word，word下一个比对的位置（1），以及当前位置输入一个递归方法。
+
+递归方法：
+存储当前位置的值，置’\0’
+遍历当前位置周围的4个位置（最多），如果该位置的值等于word[0]，那么递归调用本方法，如果得到true，则直接返回true。
+如果四个位置均不满足条件，那么当前位置恢复，返回false。

@@ -1,0 +1,31 @@
+Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+
+Example 1:
+
+Input: [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+Example 2:
+
+Input: [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+问题分析：
+我们利用动态规划的思想。
+
+随着数组的遍历我们求两个东西：
+（1）以当前数组结尾的子数组最大的正乘积是多少？
+（2）以当前数组结尾的子数组最小的负乘积是多少？
+
+我们考虑怎么利用前一个元素的两个值更新当前元素的值（用max数组存储最大正乘积，用min数组存储最小负乘积）：
+（1）如果元素为正。
+显然正乘以正才能更大。所以我们比较num * max[i - 1] 和 num，用较大值填充max[i]。
+同时我们知道正数乘以最小的负数一定能等到最小的负数。所以我们直接用num * min[i - 1]来填充min[i]
+（2）如果元素为负
+显然负数乘以最小的负数一定能得到最大的正数，所以我们直接用num * min[i - 1]来填充max[i]
+而负数乘以正数为负，我们比较num * max[i - 1] 和 num，用较小值填充min[i]
+
+如何初始化？
+如果nums[0]为正，那么max[0] = nums[0] , min[0] = 1
+如果nums[0]为负，那么max[0] = -1 , min[0] = nums[0]

@@ -1,0 +1,36 @@
+Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+
+If the fractional part is repeating, enclose the repeating part in parentheses.
+
+Example 1:
+
+Input: numerator = 1, denominator = 2
+Output: "0.5"
+Example 2:
+
+Input: numerator = 2, denominator = 1
+Output: "2"
+Example 3:
+
+Input: numerator = 2, denominator = 3
+Output: "0.(6)"
+
+首先将将数值转化为long long，这会避免一些边界条件（比如-INT_MIN出现问题）
+如果除数为0，返回NaN
+如果被除数为0，返回0
+如果被除数能被除数整除，直接返回整除的结果(to_string)
+接下来的情况都是有小数的情况。
+确定结果的符号：
+（1）正正得正，负负得正
+（2）正负为负
+如果为负，则before += ‘-’
+现在将两者都转为正数
+将被除数／除数加入before，再加上‘.’。同时计算余数。
+余数用于计算小数部分,rest = rest * 10
+
+现在进入循环，循环的终止条件是rest == 0
+每次进入循环时，计算rest / 除数作为小数部分的新加值，然后计算rest % 除数 * 10作为下一次的rest。
+我们还需要解决一个问题：如果判断循环小数？
+判断循环小数只需要判断是否出现相同的被除数，所以我们利用一个map记录每一位小数点对应的被除数和对应的位置，当我们在map中找到同样的被除数时，那我们就找到了循环小数的开始。
+小数部分可以表示为：after.substr(0,s[rest])+'(' + after.substr(s[rest]) + ‘)’。
+最后整合before和after得到最后的结果。

@@ -1,0 +1,30 @@
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Example 1:
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+Example 2:
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+
+思路：用dynamic programming的思想，用count[0...len]存储s[:i]能构成的合法decode way。
+如果s[0] == ‘0’，不合法，返回0.
+count[0] = 1 , count[1] = 1
+从i = 2开始左到右遍历字符串。分几种情况讨论：
+（1）当前位置为‘0’，看前一个位置
+	如果为’1’或’2’，那么count[I] = count[I - 2]
+	否则，不合法，返回0
+（2）当前位置不为‘0’，看前一个位置
+	如果为‘0’，那么count[I] = count[I - 1]
+	如果不为‘0’且和前者组合合法，则count[I] = count[I - 1] + count[I - 2]
+	否则，count[I] = count[I - 1]

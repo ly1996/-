@@ -1,0 +1,17 @@
+Given an integer n, return the number of trailing zeroes in n!.
+
+Example 1:
+
+Input: 3
+Output: 0
+Explanation: 3! = 6, no trailing zero.
+Example 2:
+
+Input: 5
+Output: 1
+Explanation: 5! = 120, one trailing zero.
+
+说白了，我们想要知道多少个0只需要知道乘积里面出现了多少个因子5，因为2管够
+而对于一个数，它可能包含0个5，1个5，2个5......
+所以对于n，我们可以计算n／5来计算有多少个数至少含有一个5，n／25来计算有多少个数至少含有两个5...知道n小于5^i次方。
+我们将上面的值累加则会得到我们的结果，因为对于n = 30来说，30/5 = 6，这里面包含了5，10，15，20，25，30. 30/25= 1，这里面包含了25.25被累加了两次，符合规律。

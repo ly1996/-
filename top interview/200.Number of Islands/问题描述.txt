@@ -1,0 +1,26 @@
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Example 1:
+
+Input:
+11110
+11010
+11000
+00000
+
+Output: 1
+Example 2:
+
+Input:
+11000
+11000
+00100
+00011
+
+Output: 3
+
+问题分析：
+其实是一个深度优先遍历：
+递归的调用方法search，
+Search：当当前格子是1时，将当前格子赋为0，然后search周围的四个位置；如果当前格子为0，则直接返回。
+如何计算count，我们遍历每一个格子，如果当前格子为1，count ++，然后search当前格子，所以search结束之后，和当前格子是同一个岛屿的格子都已经被赋值为0了。所以不用担心重复的问题。

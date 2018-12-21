@@ -1,0 +1,28 @@
+Given a set of distinct integers, nums, return all possible subsets (the power set).
+
+Note: The solution set must not contain duplicate subsets.
+
+Example:
+
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+
+我的做法：
+维持一个长度为n的vector，初始化为全0.然后每次加1（如同二进制数一般）
+我们通过vector构造子集：vector为1的对应位置的num在当前构造的自己中，为0的对应位置的num不在当前构造的子集中。
+count由00...00到11...11
+最快的做法:
+初始化为{{},{1}}
+然后遍历数组，每遍历一个num，就在所有vector后面加入num然后加入结果集
+-> {{},{1},{2},{1,2}}
+2 -> 2 ^ 2 -> 2 ^ 3 -> … -> 2 ^ len

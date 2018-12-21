@@ -1,0 +1,9 @@
+A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+
+Return a deep copy of the list.
+
+两种方法：
+方法1:用一个map存储新旧节点对来确定哪些节点已经生成过，这样需要O(N)的空间
+方法2:将旧节点对应的新节点连接到旧节点的next，新旧交错。空间复杂度为O(1)
+旧1 -> 新1 -> 旧2 -> 新2 -> 旧3 -> 新3……
+这样在链接新节点的random时，可以直接写为 node -> next -> random = node -> random -> next

@@ -23,7 +23,7 @@ Output: -1
 （2）如果midnum <= nums[right]。说明nums[mid...right]是有序的，我们判断target是否在这个区间。
 	（a）如果在：left = mid + 1
 	（b）否则：right = mid - 1
-（2）如果midnum >= nums[left]。说明nums[left...mid]是有序的，我们判断target是否在这个区间。
+（3）如果midnum >= nums[left]。说明nums[left...mid]是有序的，我们判断target是否在这个区间。
 	（a）如果在：right = mid - 1
 	（b）否则：left = mid + 1
 如果跳出循环（left > right），返回-1.说明找不到。
