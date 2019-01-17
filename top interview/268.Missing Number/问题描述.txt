@@ -1,0 +1,18 @@
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+Example 1:
+
+Input: [3,0,1]
+Output: 2
+Example 2:
+
+Input: [9,6,4,2,3,5,7,0,1]
+Output: 8
+Note:
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+
+解法一：
+利用和，我们知道0到n的和为(1+n)*n/2，现在我们将数组的所有元素加和，两者相减就知道丢失的元素
+解法二：
+在数组末尾加上-1，然后遍历数组，只要当前元素不为-1且不等于应该的元素，就将元素和其应在的位置上的元素交换。
+然后我们再遍历一次，返回值为-1的位置

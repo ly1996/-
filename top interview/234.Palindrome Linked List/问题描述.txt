@@ -1,0 +1,19 @@
+Given a singly linked list, determine if it is a palindrome.
+
+Example 1:
+
+Input: 1->2
+Output: false
+Example 2:
+
+Input: 1->2->2->1
+Output: true
+Follow up:
+Could you do it in O(n) time and O(1) space?
+
+解法一：
+存储所有的节点到数组，然后不断的首尾比较。
+解法二：
+对链表的一半进行翻转，然后比较两部分
+（1）翻转前一部分，利用fast和slow指针，不断将前半部分的指针翻转，利用fast指针来控制翻转的长度正好是一半
+（2）翻转后一部分，这需要首先遍历数组计算长度。

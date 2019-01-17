@@ -1,0 +1,32 @@
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+
+Example 1:
+
+Input: n = 12
+Output: 3 
+Explanation: 12 = 4 + 4 + 4.
+Example 2:
+
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+
+方法1:
+动态规划:
+从0开始计算次数
+当计算i时，如果i是某数的平方，那么counts[i] = 1
+如果不是，那么检查所有x:x*x<I，counts[I] = min(counts[x]) + 1
+
+方法二：
+数学方法：
+可证明答案只有1，2，3，4四种。
+当i是某数的平方时，答案是1
+当I = 4^k*(8*m + 7)，答案是4
+然后我们可以检查i能否被两个数的平方和构成，如果能，答案是2
+其余的答案是3
+
+方案三：
+广度优先搜索
+得到所有x * x < i
+然后将其压入栈，记当前count = 1
+接下来count ++，出栈栈内所有值，计算该值与所有可能的x*x的和，如果 == i，返回count；如果 < i，那么就可能修改计算出来的值的count。

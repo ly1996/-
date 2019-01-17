@@ -1,0 +1,42 @@
+Given a 2D board and a list of words from the dictionary, find all words in the board.
+
+Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+Example:
+
+Input: 
+words = ["oath","pea","eat","rain"] and board =
+[
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+
+Output: ["eat","oath"]
+Note:
+You may assume that all inputs are consist of lowercase letters a-z.
+
+现在要搜索一个单词组。如果对每一个单词都遍历一次board，那么时间复杂度很高。
+我们可以用一个trie树来存储单词组。利用搜索trie树来代替搜索单个的单词。
+
+首先我们构建trie树存储单词组。利用visit数组存储board数组的访问情况。
+class TrieNode {
+public:
+    // Initialize your data structure here.
+    TrieNode() : nodes(26, NULL), isWord(false){
+    }
+    vector<TrieNode*> nodes;
+    bool isWord;
+    //char ch;
+};
+每个TrieNode节点包含：
+（1）访问到当前节点时，是否构成单词
+（2）访问到当前节点（某前缀），接下来有效的后缀节点数组。
+
+所以我们访问某个位置时，我们仅需要检查：
+（1）是否已经构成单词
+（2）邻接节点是否有效（visit）并且可能构成word（通过nodes检查）。只有满足前面两个条件，我们才会继续搜索。
+
+所以通过这种方式，我们将字符组整合到一个结构体中，减少了遍历字符数组的时间复杂度
+

@@ -1,0 +1,30 @@
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+Example:
+
+Consider the following matrix:
+
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+Given target = 5, return true.
+
+Given target = 20, return false.
+
+比较笨的做法：
+利用二分搜索，每次检查矩阵中心位置的值和taget
+（1）如果相等，返回true
+（2）如果target更小，我们需要去掉右下角的部分，因为它肯定比target大
+（3）如果target更大，我们需要去掉左上角的部分，因为它肯定比target小
+
+比较smart的做法。
+我们从右上角开始，比较当前元素和target的大小
+（1）如果相等，返回true
+（2）如果target更小，那么将位置左移，因为当前元素下面的元素肯定比target更大
+（3）如果target更大，那么将位置下移，因为当前元素左边的元素肯定比target更小

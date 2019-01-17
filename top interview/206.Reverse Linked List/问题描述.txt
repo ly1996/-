@@ -1,0 +1,16 @@
+Reverse a singly linked list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+Follow up:
+
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+可以递归解决，也可以循环解决。
+（1）循环解决。
+用两个指针来分别代表当前的节点和当前节点的前一个节点。
+每次循环时，用临时借点保存当前节点的next，将当前节点的next设为上一个节点，然后将前一个节点更新为当前节点，将当前节点更新为下一个节点。
+（2）递归的解决，如果head == null或者 head -> next == null，直接返回head
+否则，反转head -> next，然后通过head -> next找到返回链表的末尾，然后将head加到末尾，将head -> next设为NULL

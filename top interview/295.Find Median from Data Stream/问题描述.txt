@@ -1,0 +1,40 @@
+Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.
+
+For example,
+[2,3,4], the median is 3
+
+[2,3], the median is (2 + 3) / 2 = 2.5
+
+Design a data structure that supports the following two operations:
+
+void addNum(int num) - Add a integer number from the data stream to the data structure.
+double findMedian() - Return the median of all elements so far.
+ 
+
+Example:
+
+addNum(1)
+addNum(2)
+findMedian() -> 1.5
+addNum(3) 
+findMedian() -> 2
+ 
+
+Follow up:
+
+If all integer numbers from the stream are between 0 and 100, how would you optimize it?
+If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
+
+也是剑指offer中的一道题
+
+问题分析：
+其实我们可以用树来解决这个问题，构建一棵平衡的二叉搜索树，这样插入的复杂度是O(lgn)，而获取中位数的复杂度是O(1)。
+但是标准库里面并没有这个的实现，所以考虑用最大堆和最小堆的组合来。
+我们将数据分为大小几乎相等的两部分（最多大小相差1），其中一部分的数据比另一部分的数据都要大。
+而我们用最小堆存储较大的数据，用最大堆存储较小的数据。并且规定要么两个堆的大小一致，要么较大的部分多一个数。
+所以当数据的大小为奇数时，我们返回较大部分的最小值（最小堆的顶部）。如果数据的大小为偶数时，我们返回（较大部分的最小值+较小部分的最大值）／2.0；
+现在来设计插入：
+（1）如果当前大小为偶数，那应该将数据插入较大的部分。
+但是如果当前的数据比较小部分的最大值小怎么办？此时我们将较小部分的最大值取出插入较大部分，然后将当前数插入较小部分。
+（2）如果当前大小为奇数，那么应该将数据插入较小的部分。
+但是如果当前的数据比较大部分的最小值大怎么办？此时我们将较大部分的最小值取出插入较小部分，然后将当前数插入较大部分。

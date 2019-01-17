@@ -1,0 +1,18 @@
+Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Example:
+
+Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Note:
+
+You must do this in-place without making a copy of the array.
+Minimize the total number of operations.
+
+方法1（自己的笨方法）
+找到每个0的位置，然后从它后面一位开始检查第一个非0的数，两者交换位置，然后位置++。
+
+更快的方法：
+我们只需要保证每个非0的数在其该在的位置，那么0就会正常。
+我们维持两个指针，指针i用于遍历数组，j用于指向当前非0应该在的位置。
+所以我们用i遍历时，每遇到一个非0，那么用swap将其放入其该在的位置，然后j++

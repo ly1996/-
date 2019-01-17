@@ -1,0 +1,30 @@
+Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Example 1:
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+Example 2:
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+Note: 
+You may assume k is always valid, 1 ≤ k ≤ array's length.
+
+寻找顺序量的算法
+其实就是用快速排序的partition将数组一分为二，作为基准点的数在数组中的位置是正确的。
+所以算法的步骤就是：
+（1）选定基准点，partition，现在基准点在正确的位置，比基准点小的数在其右边，比其大的数在其左边。
+（2）比较基准点的位置和我们需要找的位置，如果正好相等，那么返回基准点；如果基准点较小，那么在基准点的右边继续寻找；如果基准点较大，那么在基准点的左边继续寻找
+
+我自己的算法比较慢，是因为我的partitoin算法比较慢
+比较快的partition
+    int partition(vector<int>& nums, int lo, int hi){ 
+        int pivot=lo++;  // always select left as pivot
+        while(lo<=hi){
+            if (nums[lo]<nums[pivot]) swap(nums[lo], nums[hi--]);
+            else lo++;
+        }
+        swap(nums[pivot], nums[hi]); 
+        return hi;
+    }

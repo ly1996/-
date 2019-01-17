@@ -1,0 +1,14 @@
+Count the number of prime numbers less than a non-negative number, n.
+
+Example:
+
+Input: 10
+Output: 4
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+
+问题分析：
+并没有什么取巧的方法，就是设计怎么排除（并且不重复的排除）
+我们用result记录质数的个数。
+首先，除了2以外的偶数都不是，所以result = n／2.这里面排出了1和不是2的所有偶数。
+接下来我们从3开始不断遍历奇数，直到i * i > n。为什么不是i > n呢，这和我们的排除方法有关。
+对于奇书中的非质数m,它可以分解成多个质数的乘积，比如15 = 3 * 5 = 3 * （3 + 2），9 = 3 * 3 = 3 * （3 + 0）.所以我们得到一个质数i，我们就可以将i * (i + 0), i * (i + 2)…判定为非质数，比i * i小的奇数要么是质数，要么能被表示为比i小的质数的上述的表达式。一旦我们利用表达式计算出来的数还没有被设为非质数，那么我们将其设为非质数，result—
